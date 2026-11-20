@@ -1,0 +1,40 @@
+# Failed Login Counter
+
+A small Python script that reads a login log (CSV file) and lists the top 10 IP addresses by number of failed logins.
+
+I built it while learning SOC work: finding the IP that is guessing passwords is a first step in many investigations.
+
+## How it works
+1. Reads `logins.csv` row by row.
+2. Keeps only the rows where the result is FAILED.
+3. Counts the failed logins for each IP address.
+4. Prints the top 10.
+
+## How to run it
+1. Install Python.
+2. Put `count_failed.py` and `logins.csv` in the same folder.
+3. In a terminal, run:
+
+```
+py count_failed.py
+```
+
+On some computers the command is `python count_failed.py`.
+
+## Example output
+```
+Top 10 IPs by failed logins:
+203.0.113.5 5
+198.51.100.7 3
+192.0.2.44 1
+192.0.2.9 1
+```
+
+## Notes
+- The data in `logins.csv` is made up. The IP addresses are reserved example addresses.
+- In this sample, 203.0.113.5 fails five times and then succeeds, which is the pattern of a brute-force attack.
+
+## Next steps
+- Read real log data exported from Splunk (BOTS v1).
+- Check IP addresses on Virus lTotal and AbuseIPDB.
+- Save a ranked CSV of the results.
